@@ -3,88 +3,84 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>生日快乐🎂</title>
+<title>颜冰姐 生日快乐🎂</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{
-  width:100vw;height:100vh;
-  overflow:hidden;
-  background-color:#000;
-  background-image: url("https://cdn.jsdelivr.net/gh/xiejingrui/ccc/a5c3d6422dbbba643c861bba9c41cbc5.jpg");
-  background-position:center;
-  background-size:cover;
-  background-repeat:no-repeat;
-  font-family:"Microsoft Yahei",sans-serif;
+    width:100vw;height:100vh;
+    overflow:hidden;
+    background-color:transparent;
+    background-image: url("https://cdn.jsdelivr.net/gh/xiejingrui/ccc/a5c3d6422dbbba643c861bba9c41cbc5.jpg");
+    background-position:center;
+    background-size:cover;
+    background-repeat:no-repeat;
+    font-family:"Microsoft Yahei",sans-serif;
 }
-/* 烟花画布 */
 #fireCanvas{
-  position:fixed;
-  top:0;left:0;
-  width:100%;height:100%;
-  z-index:1;
+    position:fixed;
+    top:0;left:0;
+    width:100%;height:100%;
+    z-index:1;
 }
-/* 中间文字 */
 .wrap{
-  position:relative;
-  z-index:2;
-  width:100%;
-  height:100vh;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  color:#fff;
-  text-align:center;
-  padding:20px;
-  background:rgba(0,0,0,0.4);
+    position:relative;
+    z-index:2;
+    width:100%;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    color:#fff;
+    text-align:center;
+    padding:20px;
+    background:rgba(0,0,0,0.15);
 }
 h1{
-  font-size:48px;
-  text-shadow:0 0 10px #ff4488;
-  margin-bottom:30px;
+    font-size:48px;
+    text-shadow:0 0 10px #ff4488;
+    margin-bottom:30px;
 }
 .msg{
-  font-size:22px;
-  line-height:2.2;
-  text-shadow:0 0 6px #fff;
+    font-size:22px;
+    line-height:2.2;
+    text-shadow:0 0 6px #fff;
 }
-/* 气球 */
 .balloon{
-  position:absolute;
-  bottom:-120px;
-  width:60px;height:80px;
-  border-radius:50% 50% 50% 50%;
-  animation:rise 8s linear infinite;
+    position:absolute;
+    bottom:-120px;
+    width:60px;height:80px;
+    border-radius:50%;
+    animation:rise 8s linear infinite;
 }
 .balloon::after{
-  content:"";
-  position:absolute;
-  width:1px;height:80px;
-  background:#fff;
-  left:50%;top:100%;
+    content:"";
+    position:absolute;
+    width:1px;height:80px;
+    background:#fff;
+    left:50%;top:100%;
 }
 @keyframes rise{
-  0%{transform:translateY(0) rotate(0deg);opacity:0.85;}
-  100%{transform:translateY(-110vh) rotate(10deg);opacity:0;}
+    0%{transform:translateY(0) rotate(0deg);opacity:0.85;}
+    100%{transform:translateY(-110vh) rotate(10deg);opacity:0;}
 }
-/* 音乐按钮 */
 .musicBtn{
-  position:fixed;
-  z-index:9;
-  bottom:30px;
-  padding:10px 20px;
-  background:#ff4488;
-  color:#fff;
-  border:none;
-  border-radius:30px;
-  font-size:16px;
+    position:fixed;
+    z-index:9;
+    bottom:30px;
+    padding:10px 20px;
+    background:#ff4488;
+    color:#fff;
+    border:none;
+    border-radius:30px;
+    font-size:16px;
 }
 </style>
 </head>
 <body>
 <canvas id="fireCanvas"></canvas>
 <div class="wrap">
-  <h1>生日快乐 🎉</h1>
+  <h1>阿冰 生日快乐 🎉</h1>
   <div class="msg">
     愿岁岁平安，年年欢喜<br>
     所有心愿，皆可成真<br>
@@ -93,24 +89,11 @@ h1{
 </div>
 <button class="musicBtn" id="playBtn">🎵 点击播放生日歌</button>
 <audio id="bgMusic" loop>
-  <source src="https://cdn.jsdelivr.net/gh/xiejingrui/ccc/birth.mp3">
+  <source src="https://cdn.jsdelivr.net/gh/xiejingrui/ccc/birth.mp3" type="audio/mpeg">
+  浏览器不支持音频
 
 
 <script>
-// 自动生成气球
-const colors = ['#ff477e','#409eff','#ffd43b','#37b24d','#be4bdb'];
-function createBalloon(){
-  const b = document.createElement('div');
-  b.className="balloon";
-  b.style.left = Math.random()*90 + "%";
-  b.style.background = colors[Math.floor(Math.random()*colors.length)];
-  b.style.animationDelay = Math.random()*4 + "s";
-  document.body.appendChild(b);
-  setTimeout(()=>b.remove(),12000);
-}
-setInterval(createBalloon,1200);
-
-//烟花代码
 const canvas = document.getElementById("fireCanvas");
 const ctx = canvas.getContext("2d");
 function resize(){
@@ -148,12 +131,12 @@ class Particle{
 }
 let particles=[];
 function createFire(x,y){
-  const colorArr=['#ff477e','#ffd43b','#409eff','#37b24d','#be4bdb'];
-  const c = colorArr[Math.floor(Math.random()*colorArr.length)];
-  for(let i=0;i<120;i++) particles.push(new Particle(x,y,c));
+  const colorArr=['#ff477e','#409eff','#ffd43b','#37b24d','#be4bdb'];
+  for(let i=0;i<120;i++) particles.push(new Particle(x,y,colorArr[Math.floor(Math.random()*colorArr.length)]));
 }
 canvas.addEventListener("click",e=>createFire(e.clientX,e.clientY));
 function animate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
   requestAnimationFrame(animate);
   ctx.fillStyle="rgba(0,0,0,0.15)";
   ctx.fillRect(0,0,canvas.width,canvas.height);
@@ -165,12 +148,38 @@ function animate(){
 }
 animate();
 
-//音乐
+//气球
+const colors = ['#ff477e','#409eff','#ffd43b','#37b24d','#be4bdb'];
+function createBalloon(){
+  const b = document.createElement('div');
+  b.className="balloon";
+  b.style.left = Math.random()*90 + "%";
+  b.style.background = colors[Math.floor(Math.random()*colors.length)];
+  b.style.animationDelay = Math.random()*4 + "s";
+  document.body.appendChild(b);
+  setTimeout(()=>b.remove(),12000);
+}
+setInterval(createBalloon,1200);
+
+//音乐播放控制
 const audio=document.getElementById("bgMusic");
 const playBtn=document.getElementById("playBtn");
-playBtn.onclick=()=>{
-  audio.play();
-  playBtn.innerText="🎵音乐播放中";
+let isPlaying = false;
+playBtn.onclick=async ()=>{
+  try{
+    if(!isPlaying){
+      await audio.play();
+      playBtn.innerText="🎵 正在播放，点击暂停";
+      isPlaying=true;
+    }else{
+      audio.pause();
+      playBtn.innerText="🎵 点击播放生日歌";
+      isPlaying=false;
+    }
+  }catch(err){
+    alert("音频加载失败！");
+    console.error(err);
+  }
 }
 </script>
 </body>
